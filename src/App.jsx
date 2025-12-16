@@ -45,9 +45,13 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
         <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
+        <Route path="/kurumsal" element={<PageWrapper><AboutPage /></PageWrapper>} />
         <Route path="/projects" element={<PageWrapper><ProjectsPage /></PageWrapper>} />
+        <Route path="/referanslar" element={<PageWrapper><ProjectsPage /></PageWrapper>} />
         <Route path="/services" element={<PageWrapper><ServicesPage /></PageWrapper>} />
+        <Route path="/hizmetler" element={<PageWrapper><ServicesPage /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
+        <Route path="/iletisim" element={<PageWrapper><ContactPage /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
