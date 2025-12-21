@@ -100,11 +100,11 @@ const AboutPage = () => {
                         >
                             <p className="text-gray-300 text-lg leading-relaxed mb-8">
                                 Modern mimari anlayışı, sürdürülebilir yapı teknolojileri ve müşteri memnuniyetini ön planda
-                                tutan yaklaşımımızla, yaşam alanlarınızı hayallerinizin ötesinde inşa ediyoruz. Her projemizde
-                                kalite, güvenilirlik ve estetik değerleri bir arada sunuyoruz.
+                                tutan yaklaşımızla, yaşam alanlarınızı hayallerinizin ötesinde inşa ediyoruz. Her projemizde
+                                kalite, güvenilirlik, sağlamlık ve estetik değerleri bir arada sunuyoruz.
                             </p>
                             <p className="text-gray-300 text-lg leading-relaxed" style={{ marginBottom: '80px' }}>
-                                Alanında uzman mühendis ve mimar kadromuzla, konut projelerinden ticari yapılara,
+                                Alanında uzman kadromuzla, konut projelerinden ticari yapılara,
                                 kentsel dönüşümden restorasyon çalışmalarına kadar geniş bir yelpazede hizmet veriyoruz.
                             </p>
 
