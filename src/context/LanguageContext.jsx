@@ -64,6 +64,29 @@ export const LanguageProvider = ({ children }) => {
 
     // Akıllı proje ismi çevirisi
     const translateProjectName = useCallback((name) => {
+        // ÖNCELİKLİ: Tam proje ismi değişiklikleri (Her iki dil için de geçerli)
+        const projectNameMappings = {
+            // Kullanıcı istekleri doğrultusunda isim değişiklikleri
+            'Eren Çatı': { tr: 'Çatı', en: 'Roof' },
+            'Dilek Hanım Çatı': { tr: 'Çatı', en: 'Roof' },
+            'Hüseyin Aslantürk Konut 2022': { tr: 'Konut 2022', en: 'Residence 2022' },
+            'Hakan Şahin Konut': { tr: 'Darıca Konut', en: 'Darica Residence' },
+            'Hacıoğulları Küçükyalı Beton Santrali': { tr: 'Küçükyalı Beton Santrali', en: 'Küçükyalı Concrete Plant' },
+            'Gözde Konut': { tr: 'Osmangazi Konut', en: 'Osmangazi Residence' },
+            'Mehmet Bey Villa Bayramoğlu': { tr: 'Villa Bayramoğlu', en: 'Bayramoğlu Villa' },
+            'Osman Sayılı İş Merkezi Binası': { tr: 'İş Merkezi Binası', en: 'Business Center Building' },
+            'Ömer Atıcı Konut': { tr: 'Atıcı Konut', en: 'Atıcı Residence' },
+            'Şule Hanım Çatı': { tr: 'Çatı', en: 'Roof' },
+            'Yusuf Destek 2022': { tr: 'Bayramoğlu Villa 2022', en: 'Bayramoğlu Villa 2022' },
+            'Yusuf Aka Çatı ve Tadilat': { tr: 'Eskihisar Çatı ve Tadilat 2021', en: 'Eskihisar Roof and Renovation 2021' },
+        };
+
+        // Tam eşleşme kontrolü
+        if (projectNameMappings[name]) {
+            return projectNameMappings[name][language];
+        }
+
+        // Türkçe modda diğer değişiklik yok
         if (language === 'tr') return name;
 
         // 1. Önce stringi temizle ve hazırla
@@ -95,14 +118,22 @@ export const LanguageProvider = ({ children }) => {
             [/osman\s+sayılı\s+iş\s+merkezi\s+binası/gi, 'Osman Sayılı Business Center Building'],
             [/nenehatun\s+residence\s+inşaat(ı)?/gi, 'Nenehatun Residence Construction'],
 
-            // Tuzla Municipality Case (Mixed language input handling)
-            // "Tuzla Municipality Çeşitli Alanlarda" -> "Tuzla Municipality Various Areas"
+            // Tuzla Municipality Case
             [/belediye(si)?\s+çeşitli\s+alanlarda/gi, 'Municipality Various Areas'],
-            [/municipality\s+çeşitli\s+alanlarda/gi, 'Municipality Various Areas'], // Already partially translated case
+            [/municipality\s+çeşitli\s+alanlarda/gi, 'Municipality Various Areas'],
 
             // Villa Bayramoglu Case
-            // "Villa Bayramoglu İlave Ek" -> "Villa Bayramoglu Additional Extension"
             [/ilave\s+ek/gi, 'Additional Extension'],
+
+            // Yeni Darıca Cemetery Case
+            // "Yeni Darica Cemetery Kapi Girisi" -> "New Darica Cemetery Entrance Gate"
+            [/yeni\s+darıca\s+ce?metery\s+kapı\s+girişi/gi, 'New Darica Cemetery Entrance Gate'],
+            [/kapı\s+girişi/gi, 'Entrance Gate'],
+            [/yeni/gi, 'New'],
+
+            // Yusuf Destek Case
+            // "Yusuf Destek" -> "Yusuf Destek Residence" (Sadece isim kalmışsa tür ekle)
+            [/yusuf\s+destek/gi, 'Yusuf Destek Residence'],
 
             // Saat Kulesi Yanı
             [/saat\s+kules[iı]\s+yan[iı]\s+(residence|konut)/gi, 'Residence Near Clock Tower'],
