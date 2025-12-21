@@ -70,6 +70,7 @@ export const LanguageProvider = ({ children }) => {
         // İngilizce çeviriler için mapping (Türkçe isim -> İngilizce isim)
         const projectNameMappings = {
             'Fabrika Bekçi Kulübesi': 'Factory Guard House',
+            'Dilovası Prefabrik Altyapı': 'Dilovasi Prefabricated Infrastructure',
             'Çatı Bakımı ve Onarımı': 'Roof Maintenance and Repair',
             'Çatı Çalışması 2': 'Roofing Work 2',
             'Çatı Çalışması 3 Bayramoğlu 2021': 'Roofing Work 3 Bayramoglu 2021',
