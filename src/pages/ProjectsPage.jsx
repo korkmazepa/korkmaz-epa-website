@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectModal from '../components/ProjectModal';
 import cloudinaryData from '../cloudinaryData.json';
+import { useLanguage } from '../context/LanguageContext';
 
 // Sayfa başına proje sayısı
 const PROJECTS_PER_PAGE = 6;
@@ -43,6 +44,7 @@ const projects = cloudinaryData.map((item, index) => ({
 }));
 
 const ProjectsPage = () => {
+    const { t } = useLanguage();
     const [selectedProject, setSelectedProject] = useState(null);
     const [filter, setFilter] = useState('Tümü');
     const [currentPage, setCurrentPage] = useState(0);
@@ -150,10 +152,10 @@ const ProjectsPage = () => {
                             marginBottom: '16px'
                         }}
                     >
-                        Referanslarımız ve Tecrübelerimiz
+                        {t('projects.title')}
                     </h1>
                     <p style={{ color: '#9ca3af', fontSize: '1.125rem', maxWidth: '700px', margin: '0 auto' }}>
-                        Yılların birikimi ve deneyimiyle tamamladığımız projelerimiz
+                        {t('projects.subtitle')}
                     </p>
                 </div>
             </section>
@@ -194,7 +196,7 @@ const ProjectsPage = () => {
                                     }
                                 }}
                             >
-                                {category}
+                                {category === 'Tümü' ? t('projects.all') : category}
                             </button>
                         ))}
                     </div>
@@ -420,9 +422,9 @@ const ProjectsPage = () => {
                         </div>
 
                         <p style={{ color: '#6b7280', fontSize: '1.125rem' }}>
-                            Sayfa <span style={{ color: '#2dd4bf', fontWeight: 'bold' }}>{currentPage + 1}</span> / {totalPages}
+                            {t('projects.page')} <span style={{ color: '#2dd4bf', fontWeight: 'bold' }}>{currentPage + 1}</span> / {totalPages}
                             <span style={{ margin: '0 12px', color: '#374151' }}>•</span>
-                            Toplam <span style={{ color: '#2dd4bf', fontWeight: 'bold' }}>{filteredProjects.length}</span> proje
+                            {t('projects.total')} <span style={{ color: '#2dd4bf', fontWeight: 'bold' }}>{filteredProjects.length}</span> {t('projects.project')}
                         </p>
                     </div>
                 </div>

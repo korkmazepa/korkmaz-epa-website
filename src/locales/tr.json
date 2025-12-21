@@ -1,0 +1,77 @@
+{
+    "nav": {
+        "home": "Ana Sayfa",
+        "about": "Kurumsal",
+        "projects": "Referanslar",
+        "services": "Hizmetler",
+        "contact": "İletişim",
+        "getQuote": "Teklif Al"
+    },
+    "home": {
+        "slogan": "\"Size yeni bir dünya inşa ediyoruz.\"",
+        "description": "Kalite, güven ve yenilikçi yaklaşımlarla hayallerinizi gerçeğe dönüştürüyoruz.",
+        "cta": "İletişime Geçin"
+    },
+    "about": {
+        "title": "Hakkımızda",
+        "subtitle": "Kurumsal Kimlik ve Değerlerimiz",
+        "description": "20 yılı aşkın deneyimimizle, güvenilir ve kaliteli inşaat hizmetleri sunuyoruz."
+    },
+    "projects": {
+        "title": "Referanslarımız ve Tecrübelerimiz",
+        "subtitle": "Yılların birikimi ve deneyimiyle tamamladığımız projelerimiz",
+        "all": "Tümü",
+        "page": "Sayfa",
+        "total": "Toplam",
+        "project": "proje",
+        "swipe": "Kaydır",
+        "photoNotFound": "Fotoğraf bulunamadı"
+    },
+    "services": {
+        "title": "Hizmetlerimiz",
+        "subtitle": "Size özel çözümler sunuyoruz",
+        "residential": "Konut Projeleri",
+        "commercial": "Ticari Yapılar",
+        "urbanRenewal": "Kentsel Dönüşüm",
+        "contracting": "Taahhüt İşleri",
+        "renovation": "Tadilat ve Restorasyon",
+        "roofing": "Çatı Sistemleri"
+    },
+    "contact": {
+        "title": "İletişim",
+        "subtitle": "Bizimle İletişime Geçin",
+        "name": "Adınız",
+        "email": "E-posta",
+        "phone": "Telefon",
+        "message": "Mesajınız",
+        "send": "Gönder"
+    },
+    "footer": {
+        "cta": "Projeniz İçin Hazırız!",
+        "ctaSubtitle": "Hayalinizdeki yapıyı birlikte inşa edelim.",
+        "callNow": "Hemen Arayın",
+        "companyDesc": "Kaliteli işçilik ve güvenilir hizmet anlayışıyla modern yaşam alanları inşa ediyoruz.",
+        "quickLinks": "Hızlı Linkler",
+        "ourServices": "Hizmetlerimiz",
+        "contact": "İletişim",
+        "allRights": "© 2025 Korkmaz İnşaat. Tüm Hakları Saklıdır.",
+        "privacy": "Gizlilik Politikası",
+        "terms": "Kullanım Şartları"
+    },
+    "features": {
+        "quality": "Kaliteli İşçilik",
+        "qualityDesc": "Profesyonel ekip",
+        "onTime": "Zamanında Teslim",
+        "onTimeDesc": "Söz verilen tarihte",
+        "safety": "Güvenli İnşaat",
+        "safetyDesc": "İSG standartlarında",
+        "satisfaction": "%100 Memnuniyet",
+        "satisfactionDesc": "Müşteri odaklı"
+    },
+    "stats": {
+        "projects": "Tamamlanan Proje",
+        "customers": "Mutlu Müşteri",
+        "employees": "Uzman Çalışan",
+        "active": "Aktif Proje"
+    }
+}

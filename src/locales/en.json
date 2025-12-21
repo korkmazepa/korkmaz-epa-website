@@ -1,0 +1,77 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "services": "Services",
+        "contact": "Contact",
+        "getQuote": "Get Quote"
+    },
+    "home": {
+        "slogan": "\"Building a new world for you.\"",
+        "description": "We turn your dreams into reality with quality, trust, and innovative approaches.",
+        "cta": "Contact Us"
+    },
+    "about": {
+        "title": "About Us",
+        "subtitle": "Our Corporate Identity and Values",
+        "description": "With over 20 years of experience, we provide reliable and quality construction services."
+    },
+    "projects": {
+        "title": "Our Projects and Experience",
+        "subtitle": "Projects completed with years of expertise and experience",
+        "all": "All",
+        "page": "Page",
+        "total": "Total",
+        "project": "projects",
+        "swipe": "Swipe",
+        "photoNotFound": "Photo not found"
+    },
+    "services": {
+        "title": "Our Services",
+        "subtitle": "Custom solutions for you",
+        "residential": "Residential Projects",
+        "commercial": "Commercial Buildings",
+        "urbanRenewal": "Urban Renewal",
+        "contracting": "Contracting Services",
+        "renovation": "Renovation & Restoration",
+        "roofing": "Roofing Systems"
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Get in Touch with Us",
+        "name": "Your Name",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Your Message",
+        "send": "Send"
+    },
+    "footer": {
+        "cta": "Ready for Your Project!",
+        "ctaSubtitle": "Let's build your dream structure together.",
+        "callNow": "Call Now",
+        "companyDesc": "We build modern living spaces with quality workmanship and reliable service.",
+        "quickLinks": "Quick Links",
+        "ourServices": "Our Services",
+        "contact": "Contact",
+        "allRights": "© 2025 Korkmaz Construction. All Rights Reserved.",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Use"
+    },
+    "features": {
+        "quality": "Quality Workmanship",
+        "qualityDesc": "Professional team",
+        "onTime": "On-Time Delivery",
+        "onTimeDesc": "As promised",
+        "safety": "Safe Construction",
+        "safetyDesc": "OHS standards",
+        "satisfaction": "100% Satisfaction",
+        "satisfactionDesc": "Customer focused"
+    },
+    "stats": {
+        "projects": "Completed Projects",
+        "customers": "Happy Customers",
+        "employees": "Expert Employees",
+        "active": "Active Projects"
+    }
+}

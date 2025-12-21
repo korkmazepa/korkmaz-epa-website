@@ -2,8 +2,11 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import logoUzunBeyaz from '../assets/logo/uzun-beyaz-cizgili-logo.png';
 import anasayfaArkaplan from '../assets/Resimler-optimized/anasayfaresim.webp';
+import { useLanguage } from '../context/LanguageContext';
 
 const HomePage = () => {
+    const { t } = useLanguage();
+
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* Background Image */}
@@ -49,7 +52,7 @@ const HomePage = () => {
                         }}
                         className="font-[family-name:var(--font-family-heading)]"
                     >
-                        "Size yeni bir dünya inşa ediyoruz."
+                        {t('home.slogan')}
                     </motion.h1>
 
                     <motion.p
@@ -65,7 +68,7 @@ const HomePage = () => {
                             lineHeight: '1.75'
                         }}
                     >
-                        Kalite, güven ve yenilikçi yaklaşımlarla hayallerinizi gerçeğe dönüştürüyoruz.
+                        {t('home.description')}
                     </motion.p>
 
                     <motion.div
@@ -95,7 +98,7 @@ const HomePage = () => {
                                 }}
                             >
                                 <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                    <span>İletişime Geçin</span>
+                                    <span>{t('home.cta')}</span>
                                     <motion.svg
                                         style={{ width: '24px', height: '24px' }}
                                         fill="none"

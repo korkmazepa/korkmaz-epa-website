@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect } from 'react'
 import './index.css'
 import ThemeProvider from './context/ThemeProvider'
+import { LanguageProvider } from './context/LanguageContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
@@ -63,16 +64,18 @@ const AnimatedRoutes = () => {
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-          <Navbar />
-          <main>
-            <AnimatedRoutes />
-          </main>
-          <Footer />
-        </div>
-      </BrowserRouter>
+      <LanguageProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+            <Navbar />
+            <main>
+              <AnimatedRoutes />
+            </main>
+            <Footer />
+          </div>
+        </BrowserRouter>
+      </LanguageProvider>
     </ThemeProvider>
   )
 }

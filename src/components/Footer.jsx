@@ -1,7 +1,29 @@
 import { Link } from 'react-router-dom';
-import { quickLinks, footerServices, socialLinks, contactInfo } from '../data';
+import { socialLinks, contactInfo } from '../data';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
+    const { t } = useLanguage();
+
+    // Dinamik quick links - çevirilerle
+    const quickLinks = [
+        { name: t('nav.home'), path: '/' },
+        { name: t('nav.about'), path: '/about' },
+        { name: t('nav.projects'), path: '/projects' },
+        { name: t('nav.services'), path: '/services' },
+        { name: t('nav.contact'), path: '/contact' },
+    ];
+
+    // Dinamik footer services - çevirilerle
+    const footerServices = [
+        t('services.residential'),
+        t('services.commercial'),
+        t('services.urbanRenewal'),
+        t('services.contracting'),
+        t('services.renovation'),
+        t('services.roofing'),
+    ];
+
     return (
         <footer className="bg-gray-900 dark:bg-black text-white relative">
             {/* CTA Section with animated gradient */}
@@ -35,10 +57,10 @@ const Footer = () => {
                     <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-7xl w-full">
                         <div>
                             <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-family-heading)]">
-                                Projeniz İçin Hazırız!
+                                {t('footer.cta')}
                             </h3>
                             <p className="text-teal-100 mt-2">
-                                Hayalinizdeki yapıyı birlikte inşa edelim.
+                                {t('footer.ctaSubtitle')}
                             </p>
                         </div>
                         <a
@@ -69,7 +91,7 @@ const Footer = () => {
                             <svg style={{ width: '28px', height: '28px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
-                            Hemen Arayın
+                            {t('footer.callNow')}
                         </a>
                     </div>
                 </div>
@@ -82,84 +104,13 @@ const Footer = () => {
                     background: 'linear-gradient(to bottom, rgba(13, 148, 136, 0.3) 0%, transparent 100%)'
                 }}
             >
-                {/* Dry Ice Particle 1 */}
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: '10px',
-                        left: '2%',
-                        width: '300px',
-                        height: '5px',
-                        background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%)',
-                        filter: 'blur(3px)',
-                        animation: 'dryIce1 6s ease-in-out infinite'
-                    }}
-                />
-                {/* Dry Ice Particle 2 */}
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: '15px',
-                        left: '15%',
-                        width: '350px',
-                        height: '4px',
-                        background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.5) 50%, transparent 100%)',
-                        filter: 'blur(2px)',
-                        animation: 'dryIce2 7s ease-in-out infinite'
-                    }}
-                />
-                {/* Dry Ice Particle 3 */}
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: '8px',
-                        left: '30%',
-                        width: '280px',
-                        height: '6px',
-                        background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%)',
-                        filter: 'blur(4px)',
-                        animation: 'dryIce3 5s ease-in-out infinite'
-                    }}
-                />
-                {/* Dry Ice Particle 4 */}
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: '12px',
-                        left: '48%',
-                        width: '400px',
-                        height: '4px',
-                        background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%)',
-                        filter: 'blur(3px)',
-                        animation: 'dryIce4 8s ease-in-out infinite'
-                    }}
-                />
-                {/* Dry Ice Particle 5 */}
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: '6px',
-                        left: '65%',
-                        width: '320px',
-                        height: '5px',
-                        background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%)',
-                        filter: 'blur(3px)',
-                        animation: 'dryIce5 6.5s ease-in-out infinite'
-                    }}
-                />
-                {/* Dry Ice Particle 6 */}
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: '18px',
-                        left: '82%',
-                        width: '350px',
-                        height: '4px',
-                        background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.5) 50%, transparent 100%)',
-                        filter: 'blur(2px)',
-                        animation: 'dryIce6 7.5s ease-in-out infinite'
-                    }}
-                />
+                {/* Dry Ice Particles */}
+                <div style={{ position: 'absolute', top: '10px', left: '2%', width: '300px', height: '5px', background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%)', filter: 'blur(3px)', animation: 'dryIce1 6s ease-in-out infinite' }} />
+                <div style={{ position: 'absolute', top: '15px', left: '15%', width: '350px', height: '4px', background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.5) 50%, transparent 100%)', filter: 'blur(2px)', animation: 'dryIce2 7s ease-in-out infinite' }} />
+                <div style={{ position: 'absolute', top: '8px', left: '30%', width: '280px', height: '6px', background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%)', filter: 'blur(4px)', animation: 'dryIce3 5s ease-in-out infinite' }} />
+                <div style={{ position: 'absolute', top: '12px', left: '48%', width: '400px', height: '4px', background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%)', filter: 'blur(3px)', animation: 'dryIce4 8s ease-in-out infinite' }} />
+                <div style={{ position: 'absolute', top: '6px', left: '65%', width: '320px', height: '5px', background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%)', filter: 'blur(3px)', animation: 'dryIce5 6.5s ease-in-out infinite' }} />
+                <div style={{ position: 'absolute', top: '18px', left: '82%', width: '350px', height: '4px', background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.5) 50%, transparent 100%)', filter: 'blur(2px)', animation: 'dryIce6 7.5s ease-in-out infinite' }} />
             </div>
 
             {/* Main Footer */}
@@ -183,7 +134,7 @@ const Footer = () => {
                             </h4>
                         </div>
                         <p className="text-gray-400 mb-6 leading-relaxed">
-                            Kaliteli işçilik ve güvenilir hizmet anlayışıyla modern yaşam alanları inşa ediyoruz.
+                            {t('footer.companyDesc')}
                         </p>
                         <div className="flex gap-3">
                             {socialLinks.map((social) => (
@@ -202,11 +153,11 @@ const Footer = () => {
                     {/* Quick Links */}
                     <div>
                         <h4 className="text-lg font-bold font-[family-name:var(--font-family-heading)] mb-6">
-                            Hızlı Linkler
+                            {t('footer.quickLinks')}
                         </h4>
                         <ul className="space-y-3">
                             {quickLinks.map((link) => (
-                                <li key={link.name}>
+                                <li key={link.path}>
                                     <Link
                                         to={link.path}
                                         className="text-gray-400 hover:text-teal-400 transition-colors flex items-center gap-2"
@@ -224,7 +175,7 @@ const Footer = () => {
                     {/* Services */}
                     <div>
                         <h4 className="text-lg font-bold font-[family-name:var(--font-family-heading)] mb-6">
-                            Hizmetlerimiz
+                            {t('footer.ourServices')}
                         </h4>
                         <ul className="space-y-3">
                             {footerServices.map((service) => (
@@ -246,7 +197,7 @@ const Footer = () => {
                     {/* Contact Info */}
                     <div>
                         <h4 className="text-lg font-bold font-[family-name:var(--font-family-heading)] mb-6">
-                            İletişim
+                            {t('footer.contact')}
                         </h4>
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3 text-gray-400">
@@ -292,11 +243,11 @@ const Footer = () => {
                 }}>
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl w-full">
                         <p className="text-gray-500 text-sm text-center md:text-left">
-                            © 2025 Korkmaz İnşaat. Tüm Hakları Saklıdır.
+                            {t('footer.allRights')}
                         </p>
                         <div className="flex items-center gap-6 text-sm text-gray-500">
-                            <a href="#" className="hover:text-teal-400 transition-colors">Gizlilik Politikası</a>
-                            <a href="#" className="hover:text-teal-400 transition-colors">Kullanım Şartları</a>
+                            <a href="#" className="hover:text-teal-400 transition-colors">{t('footer.privacy')}</a>
+                            <a href="#" className="hover:text-teal-400 transition-colors">{t('footer.terms')}</a>
                         </div>
                     </div>
                 </div>

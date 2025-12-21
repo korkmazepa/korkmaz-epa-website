@@ -2,12 +2,22 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoBeyaz from '../assets/logo/kisa-beyaz-cizgili-logo.png';
-import { menuItems } from '../data';
+import { useLanguage } from '../context/LanguageContext';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
+    const { language, toggleLanguage, t } = useLanguage();
+
+    // Dinamik menü öğeleri - çevirilerle
+    const menuItems = [
+        { name: t('nav.home'), path: '/' },
+        { name: t('nav.about'), path: '/about' },
+        { name: t('nav.projects'), path: '/projects' },
+        { name: t('nav.services'), path: '/services' },
+        { name: t('nav.contact'), path: '/contact' },
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,13 +34,10 @@ const Navbar = () => {
     const isHome = location.pathname === '/';
     const showTransparent = isHome && !isScrolled;
 
-    // Determine navbar background based on scroll and page
     const getNavbarClass = () => {
         if (showTransparent) {
-            // On home page, not scrolled - semi-transparent dark
             return 'bg-black/30 backdrop-blur-md py-4';
         }
-        // Scrolled or other pages - solid dark background
         return 'bg-gray-900/95 backdrop-blur-lg shadow-lg py-3';
     };
 
@@ -56,7 +63,7 @@ const Navbar = () => {
                         <div className="flex gap-10">
                             {menuItems.map((item) => (
                                 <Link
-                                    key={item.name}
+                                    key={item.path}
                                     to={item.path}
                                     className={`text-base font-medium transition-all duration-300 ${location.pathname === item.path
                                         ? 'text-teal-400'
@@ -69,8 +76,19 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    {/* RIGHT: CTA Button */}
-                    <div className="flex items-center gap-4">
+                    {/* RIGHT: Language Toggle + CTA Button */}
+                    <div className="flex items-center gap-3">
+                        {/* Language Toggle Button */}
+                        <button
+                            onClick={toggleLanguage}
+                            className="flex items-center gap-1.5 px-3 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300"
+                            title={language === 'tr' ? 'Switch to English' : 'Türkçe\'ye geç'}
+                        >
+                            <span className="text-lg">{language === 'tr' ? '🇹🇷' : '🇺🇸'}</span>
+                            <span className="text-sm font-medium text-white hidden sm:inline">
+                                {language === 'tr' ? 'TR' : 'EN'}
+                            </span>
+                        </button>
 
                         <Link to="/contact" className="hidden lg:block">
                             <motion.button
@@ -91,7 +109,7 @@ const Navbar = () => {
                                     letterSpacing: '0.02em'
                                 }}
                             >
-                                Teklif Al
+                                {t('nav.getQuote')}
                             </motion.button>
                         </Link>
 
@@ -124,7 +142,7 @@ const Navbar = () => {
                         <div className="p-4">
                             <ul className="space-y-1">
                                 {menuItems.map((item) => (
-                                    <li key={item.name}>
+                                    <li key={item.path}>
                                         <Link
                                             to={item.path}
                                             className={`block py-3 px-4 rounded-xl font-medium text-base transition-colors ${location.pathname === item.path
@@ -142,7 +160,7 @@ const Navbar = () => {
                                     to="/contact"
                                     className="block py-3 px-4 bg-teal-600 hover:bg-teal-500 text-white font-semibold rounded-xl text-center transition-colors"
                                 >
-                                    Teklif Al
+                                    {t('nav.getQuote')}
                                 </Link>
                             </div>
                         </div>
