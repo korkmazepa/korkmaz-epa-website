@@ -31,10 +31,26 @@ const getCategory = (folderName) => {
     return 'Diğer';
 };
 
+// Proje ismi düzeltmeleri haritası (folder -> displayName)
+const projectNameFixes = {
+    'Dilek hanım çatı': 'Çatı Çalışması 1',
+    'Eren çatı': 'Çatı Çalışması 2',
+    'Şule hanım çatı BAYRAMOĞLU 2021': 'Çatı Çalışması 3 Bayramoğlu 2021',
+    'Hüseyin aslantürk KONUT 2022': 'Konut 2022',
+    'Hakan Şahin Konut': 'Darıca Konut',
+    'Hacıoğulları Küçükyalı Geçici Beton Santrali Betonarme İşleri': 'Küçükyalı Beton Santrali',
+    'GÖZDE KONUT 2021': 'Osmangazi Konut 2021',
+    'Mehmet Bey Villa Çevre Düzenleme Bayramoğlu 2022': 'Villa Çevre Düzenleme Bayramoğlu 2022',
+    'OSMAN SAYLI İŞ MERKEZİ BİNASI OSMANGAZİ 2016': 'İş Merkezi Binası Osmangazi 2016',
+    'Ömer Atıcı Konut 2021': 'Atıcı Konut 2021',
+    'Yusuf aka çatı katı 2021': 'Eskihisar Çatı ve Tadilat 2021',
+    'Yusuf Destek 2022': 'Bayramoğlu Villa 2022',
+};
+
 // Cloudinary verilerini projelere dönüştür
 const projects = cloudinaryData.map((item, index) => ({
     id: index + 1,
-    name: item.folder,
+    name: projectNameFixes[item.folder] || item.folder,
     folder: item.folder,
     folderPath: item.folderPath,
     coverImage: getOptimizedUrl(item.coverImage, 400),
