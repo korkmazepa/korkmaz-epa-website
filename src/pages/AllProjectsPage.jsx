@@ -188,6 +188,16 @@ const AllProjectsPage = () => {
         if (page >= 0 && page < totalPages) {
             setSlideDirection(direction);
             setCurrentPage(page);
+
+            // Sayfa değiştiğinde grid'in başına scroll yap
+            if (gridRef.current) {
+                const offset = 20; // Biraz boşluk bırak
+                const gridTop = gridRef.current.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({
+                    top: gridTop,
+                    behavior: 'smooth'
+                });
+            }
         }
     };
 
