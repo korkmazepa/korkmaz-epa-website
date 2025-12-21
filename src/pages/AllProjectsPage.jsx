@@ -83,6 +83,30 @@ const projects = cloudinaryData.map((item, index) => ({
     category: getCategory(item.folder)
 }));
 
+// Kategori öncelik sırası (en üstte olması istenen kategoriler)
+const categoryPriority = [
+    'Konut',
+    'Ticari',
+    'Betonarme',
+    'Çatı Sistemleri',
+    'Endüstriyel',
+    'Kamu',
+    'Prefabrik',
+    'Güçlendirme',
+    'Spor Tesisleri',
+    'Diğer'
+];
+
+// Projeleri kategori önceliğine göre sırala
+const sortedProjects = [...projects].sort((a, b) => {
+    const priorityA = categoryPriority.indexOf(a.category);
+    const priorityB = categoryPriority.indexOf(b.category);
+    // Listede olmayan kategoriler en sona
+    const orderA = priorityA === -1 ? 999 : priorityA;
+    const orderB = priorityB === -1 ? 999 : priorityB;
+    return orderA - orderB;
+});
+
 const AllProjectsPage = () => {
     const { t, translateCategory, translateProjectName } = useLanguage();
     const [selectedProject, setSelectedProject] = useState(null);
@@ -102,21 +126,18 @@ const AllProjectsPage = () => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Benzersiz kategorileri al
+    // Benzersiz kategorileri al - aynı öncelik sırasıyla
     const categories = useMemo(() => {
-        const cats = ['Tümü', ...new Set(projects.map(p => p.category))];
-        return cats.sort((a, b) => {
-            if (a === 'Tümü') return -1;
-            if (b === 'Tümü') return 1;
-            return a.localeCompare(b, 'tr');
-        });
+        const existingCats = new Set(projects.map(p => p.category));
+        const orderedCats = categoryPriority.filter(cat => existingCats.has(cat));
+        return ['Tümü', ...orderedCats];
     }, []);
 
     // Filtrelenmiş projeler
     const filteredProjects = useMemo(() => {
         return filter === 'Tümü'
-            ? projects
-            : projects.filter(p => p.category === filter);
+            ? sortedProjects
+            : sortedProjects.filter(p => p.category === filter);
     }, [filter]);
 
     // Toplam sayfa sayısı
