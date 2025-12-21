@@ -125,7 +125,7 @@ const ContactPage = () => {
                         }}
                         className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-wide text-white font-[family-name:var(--font-family-heading)] mb-6"
                     >
-                        Bizimle İletişime Geçin
+                        {t('contact.pageTitle')}
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -138,7 +138,7 @@ const ContactPage = () => {
                         }}
                         className="text-gray-400 text-lg leading-relaxed"
                     >
-                        Projeleriniz hakkında konuşmak veya sorularınızı sormak için bize ulaşın.
+                        {t('contact.pageDescription')}
                     </motion.p>
                 </div>
             </section>
@@ -170,7 +170,7 @@ const ContactPage = () => {
                             transition={{ duration: 0.6 }}
                         >
                             <h2 className="text-2xl font-bold text-white font-[family-name:var(--font-family-heading)] mb-8">
-                                İletişim Bilgileri
+                                {t('contact.infoTitle')}
                             </h2>
 
                             <div className="space-y-6">
@@ -182,7 +182,7 @@ const ContactPage = () => {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-white mb-1">Telefon</h3>
+                                        <h3 className="font-semibold text-white mb-1">{t('contact.phone')}</h3>
                                         <a
                                             href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
                                             className="text-xl font-bold text-teal-400 hover:text-teal-300 transition-colors"
@@ -201,7 +201,7 @@ const ContactPage = () => {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-white mb-1">Adres</h3>
+                                        <h3 className="font-semibold text-white mb-1">{t('contact.address')}</h3>
                                         <p className="text-gray-400">
                                             {t('contact.fullAddress')}
                                         </p>
@@ -216,7 +216,7 @@ const ContactPage = () => {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-white mb-1">E-posta</h3>
+                                        <h3 className="font-semibold text-white mb-1">{t('contact.email')}</h3>
                                         <a
                                             href={`mailto:${contactInfo.email}`}
                                             className="text-teal-400 hover:text-teal-300 transition-colors"
@@ -236,7 +236,7 @@ const ContactPage = () => {
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
                             <h2 className="text-2xl font-bold text-white font-[family-name:var(--font-family-heading)] mb-8">
-                                Mesaj Gönderin
+                                {t('contact.formTitle')}
                             </h2>
 
                             {/* Success Message */}
@@ -246,7 +246,7 @@ const ContactPage = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     className="mb-6 p-4 bg-teal-900/50 border border-teal-500 rounded-xl text-teal-300"
                                 >
-                                    ✅ Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+                                    {t('contact.successMessage')}
                                 </motion.div>
                             )}
 
@@ -257,7 +257,7 @@ const ContactPage = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     className="mb-6 p-4 bg-red-900/50 border border-red-500 rounded-xl text-red-300"
                                 >
-                                    ❌ Mesaj gönderilemedi. Lütfen tekrar deneyin veya doğrudan bizi arayın.
+                                    {t('contact.errorMessage')}
                                 </motion.div>
                             )}
 
@@ -265,7 +265,7 @@ const ContactPage = () => {
                                 <div className="grid sm:grid-cols-2 gap-8">
                                     <div>
                                         <label className="block text-base font-semibold text-gray-200 mb-3">
-                                            Ad Soyad
+                                            {t('contact.fullName')}
                                         </label>
                                         <input
                                             type="text"
@@ -274,12 +274,12 @@ const ContactPage = () => {
                                             onChange={handleChange}
                                             required
                                             className="w-full px-5 py-4 rounded-2xl border border-gray-600 bg-gray-800/80 text-white text-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all placeholder:text-gray-500"
-                                            placeholder="Adınız Soyadınız"
+                                            placeholder={t('contact.fullNamePlaceholder')}
                                         />
                                     </div>
                                     <div>
                                         <label className="block text-base font-semibold text-gray-200 mb-3">
-                                            Telefon
+                                            {t('contact.phone')}
                                         </label>
                                         <div className="flex gap-3">
                                             {/* Custom Country Code Dropdown */}
@@ -335,7 +335,7 @@ const ContactPage = () => {
                                                 required
                                                 maxLength={13}
                                                 className="w-full px-5 py-4 rounded-2xl border border-gray-600 bg-gray-800/80 text-white text-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all placeholder:text-gray-500"
-                                                placeholder="5XX XXX XX XX"
+                                                placeholder={t('contact.phonePlaceholder')}
                                             />
                                         </div>
                                     </div>
@@ -343,7 +343,7 @@ const ContactPage = () => {
 
                                 <div>
                                     <label className="block text-base font-semibold text-gray-200 mb-3">
-                                        E-posta
+                                        {t('contact.email')}
                                     </label>
                                     <input
                                         type="email"
@@ -352,13 +352,13 @@ const ContactPage = () => {
                                         onChange={handleChange}
                                         required
                                         className="w-full px-5 py-4 rounded-2xl border border-gray-600 bg-gray-800/80 text-white text-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all placeholder:text-gray-500"
-                                        placeholder="ornek@email.com"
+                                        placeholder={t('contact.emailPlaceholder')}
                                     />
                                 </div>
 
                                 <div>
                                     <label className="block text-base font-semibold text-gray-200 mb-3">
-                                        Konu
+                                        {t('contact.subject')}
                                     </label>
                                     <select
                                         name="konu"
@@ -368,18 +368,18 @@ const ContactPage = () => {
                                         className="w-full px-5 py-4 rounded-2xl border border-gray-600 bg-gray-800/80 text-white text-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all appearance-none cursor-pointer"
                                         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1.25rem' }}
                                     >
-                                        <option value="">Konu Seçin</option>
-                                        <option value="Konut Projesi">Konut Projesi</option>
-                                        <option value="Ticari Proje">Ticari Proje</option>
-                                        <option value="Kentsel Dönüşüm">Kentsel Dönüşüm</option>
-                                        <option value="Taahhüt İşleri">Taahhüt İşleri</option>
-                                        <option value="Diğer">Diğer</option>
+                                        <option value="">{t('contact.subjectPlaceholder')}</option>
+                                        <option value="Konut Projesi">{t('contact.subjects.residential')}</option>
+                                        <option value="Ticari Proje">{t('contact.subjects.commercial')}</option>
+                                        <option value="Kentsel Dönüşüm">{t('contact.subjects.urbanRenewal')}</option>
+                                        <option value="Taahhüt İşleri">{t('contact.subjects.contracting')}</option>
+                                        <option value="Diğer">{t('contact.subjects.other')}</option>
                                     </select>
                                 </div>
 
                                 <div>
                                     <label className="block text-base font-semibold text-gray-200 mb-3">
-                                        Mesajınız
+                                        {t('contact.message')}
                                     </label>
                                     <textarea
                                         name="mesaj"
@@ -388,7 +388,7 @@ const ContactPage = () => {
                                         required
                                         rows={6}
                                         className="w-full px-5 py-4 rounded-2xl border border-gray-600 bg-gray-800/80 text-white text-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all resize-none placeholder:text-gray-500"
-                                        placeholder="Projeniz hakkında bize bilgi verin..."
+                                        placeholder={t('contact.messagePlaceholder')}
                                     />
                                 </div>
 
@@ -415,7 +415,7 @@ const ContactPage = () => {
                                             : '0 15px 40px rgba(13, 148, 136, 0.4)'
                                     }}
                                 >
-                                    {isSubmitting ? 'Gönderiliyor...' : 'Mesaj Gönder'}
+                                    {isSubmitting ? t('contact.sendingButton') : t('contact.submitButton')}
                                 </motion.button>
                             </form>
                         </motion.div>
