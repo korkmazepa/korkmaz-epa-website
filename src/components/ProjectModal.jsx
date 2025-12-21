@@ -67,6 +67,12 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         }
     }, [project, isOpen]);
 
+    // onClose'u ref'te tut ki stale closure olmasın
+    const onCloseRef = useRef(onClose);
+    useEffect(() => {
+        onCloseRef.current = onClose;
+    }, [onClose]);
+
     // Geri tuşu ile modal'ı kapat (History API)
     useEffect(() => {
         if (!isOpen) return;
@@ -76,20 +82,20 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
         const handlePopState = () => {
             // Geri tuşuna basıldığında modal'ı kapat
-            onClose();
+            onCloseRef.current();
         };
 
         window.addEventListener('popstate', handlePopState);
         return () => {
             window.removeEventListener('popstate', handlePopState);
         };
-    }, [isOpen, onClose]);
+    }, [isOpen]); // onClose artık dependency değil, ref kullanıyoruz
 
     // Modal kapatma fonksiyonu - X butonu ve overlay için
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         // History'yi geriye al, bu popstate'i tetikleyecek ve onClose çağrılacak
         window.history.back();
-    };
+    }, []);
 
     // ESC tuşu ile kapat
     useEffect(() => {
@@ -100,7 +106,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         };
         window.addEventListener('keydown', handleEsc);
         return () => window.removeEventListener('keydown', handleEsc);
-    }, [isOpen]);
+    }, [isOpen, handleClose]);
 
     // Ok tuşları ile geçiş
     useEffect(() => {
