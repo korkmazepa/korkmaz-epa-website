@@ -68,42 +68,39 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     }, [project, isOpen]);
 
     // Geri tuşu ile modal'ı kapat (History API)
-    const isClosingFromPopState = useRef(false);
-
     useEffect(() => {
-        if (isOpen) {
-            // Modal açıldığında history'ye state ekle
-            window.history.pushState({ modal: true }, '');
-            isClosingFromPopState.current = false;
+        if (!isOpen) return;
 
-            const handlePopState = () => {
-                // Geri tuşuna basıldığında modal'ı kapat
-                isClosingFromPopState.current = true;
-                onClose();
-            };
+        // Modal açıldığında history'ye state ekle
+        window.history.pushState({ modal: true }, '');
 
-            window.addEventListener('popstate', handlePopState);
-            return () => {
-                window.removeEventListener('popstate', handlePopState);
-                // Modal normal yollarla kapatıldıysa (X butonu, overlay tıklama)
-                // history'den de çık
-                if (!isClosingFromPopState.current) {
-                    window.history.back();
-                }
-            };
-        }
+        const handlePopState = () => {
+            // Geri tuşuna basıldığında modal'ı kapat
+            onClose();
+        };
+
+        window.addEventListener('popstate', handlePopState);
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
     }, [isOpen, onClose]);
 
-    // ESC tuşu ile kapat - doğrudan onClose çağır, cleanup history'yi halleder
+    // Modal kapatma fonksiyonu - X butonu ve overlay için
+    const handleClose = () => {
+        // History'yi geriye al, bu popstate'i tetikleyecek ve onClose çağrılacak
+        window.history.back();
+    };
+
+    // ESC tuşu ile kapat
     useEffect(() => {
         const handleEsc = (e) => {
             if (e.key === 'Escape' && isOpen) {
-                onClose();
+                handleClose();
             }
         };
         window.addEventListener('keydown', handleEsc);
         return () => window.removeEventListener('keydown', handleEsc);
-    }, [isOpen, onClose]);
+    }, [isOpen]);
 
     // Ok tuşları ile geçiş
     useEffect(() => {
@@ -210,7 +207,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 className={`fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm ${isMobile ? 'p-0' : 'p-4'}`}
-                onClick={onClose}
+                onClick={handleClose}
             >
                 {/* Modal Container - Mobilde tam ekran, dikey */}
                 <motion.div
@@ -231,7 +228,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                                 <span className="text-xs text-teal-400">{project.category}</span>
                             </div>
                             <button
-                                onClick={onClose}
+                                onClick={handleClose}
                                 className="p-2 text-white bg-white/10 rounded-full hover:bg-white/20 transition-colors flex-shrink-0"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -246,7 +243,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                                 <span className="text-sm text-teal-400">{project.category}</span>
                             </div>
                             <button
-                                onClick={onClose}
+                                onClick={handleClose}
                                 className="p-2 text-white bg-white/10 rounded-full hover:bg-white/20 transition-colors"
                             >
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
