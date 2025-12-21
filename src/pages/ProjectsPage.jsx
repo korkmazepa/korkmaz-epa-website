@@ -41,9 +41,9 @@ const projectNameFixes = {
     'Hacıoğulları Küçükyalı Geçici Beton Santrali Betonarme İşleri': 'Küçükyalı Beton Santrali',
     'GÖZDE KONUT 2021': 'Osmangazi Konut 2021',
     'Mehmet Bey Villa Çevre Düzenleme Bayramoğlu 2022': 'Villa Çevre Düzenleme Bayramoğlu 2022',
-    'OSMAN SAYLI İŞ MERKEZİ BİNASI OSMANGAZİ 2016': 'İş Merkezi Binası Osmangazi 2016',
+    'OSMAN SAYILI İŞ MERKEZİ BİNASI OSMANGAZİ 2016': 'İş Merkezi Binası Osmangazi 2016',
     'Ömer Atıcı Konut 2021': 'Atıcı Konut 2021',
-    'Yusuf aka çatı katı 2021': 'Eskihisar Çatı ve Tadilat 2021',
+    'Yusuf aka çatı kat 2021': 'Eskihisar Çatı ve Tadilat 2021',
     'Yusuf Destek 2022': 'Bayramoğlu Villa 2022',
 };
 
