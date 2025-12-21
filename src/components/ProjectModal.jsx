@@ -68,34 +68,42 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     }, [project, isOpen]);
 
     // Geri tuşu ile modal'ı kapat (History API)
+    const isClosingFromPopState = useRef(false);
+
     useEffect(() => {
         if (isOpen) {
             // Modal açıldığında history'ye state ekle
             window.history.pushState({ modal: true }, '');
+            isClosingFromPopState.current = false;
 
-            const handlePopState = (e) => {
+            const handlePopState = () => {
                 // Geri tuşuna basıldığında modal'ı kapat
+                isClosingFromPopState.current = true;
                 onClose();
             };
 
             window.addEventListener('popstate', handlePopState);
             return () => {
                 window.removeEventListener('popstate', handlePopState);
+                // Modal normal yollarla kapatıldıysa (X butonu, overlay tıklama)
+                // history'den de çık
+                if (!isClosingFromPopState.current) {
+                    window.history.back();
+                }
             };
         }
     }, [isOpen, onClose]);
 
-    // ESC tuşu ile kapat
+    // ESC tuşu ile kapat - doğrudan onClose çağır, cleanup history'yi halleder
     useEffect(() => {
         const handleEsc = (e) => {
-            if (e.key === 'Escape') {
-                // ESC ile kapatırken history'yi de geri al
-                if (isOpen) window.history.back();
+            if (e.key === 'Escape' && isOpen) {
+                onClose();
             }
         };
         window.addEventListener('keydown', handleEsc);
         return () => window.removeEventListener('keydown', handleEsc);
-    }, [isOpen]);
+    }, [isOpen, onClose]);
 
     // Ok tuşları ile geçiş
     useEffect(() => {
