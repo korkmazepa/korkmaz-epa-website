@@ -62,13 +62,13 @@ const ProjectsPage = () => {
     }, []);
 
     return (
-        <div style={{ minHeight: '100vh', backgroundColor: '#042f2e' }}>
+        <div style={{ minHeight: '100vh', backgroundColor: '#0a1929' }}>
             {/* Hero Section - Title Only */}
             <section
                 style={{
                     paddingTop: '160px',
                     paddingBottom: '40px',
-                    background: 'linear-gradient(to bottom, #0f766e, #042f2e)'
+                    background: 'linear-gradient(to bottom, #0f172a, #0a1929)'
                 }}
             >
                 <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px', textAlign: 'center' }}>
@@ -116,7 +116,7 @@ const ProjectsPage = () => {
                                 position: 'relative',
                                 overflow: 'hidden',
                                 borderRadius: '20px',
-                                backgroundColor: '#115e59',
+                                backgroundColor: '#1e293b',
                                 aspectRatio: isMobile ? '16/10' : '21/9',
                                 boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
                                 border: '1px solid rgba(255, 255, 255, 0.1)'
@@ -157,7 +157,7 @@ const ProjectsPage = () => {
                                         gap: '8px',
                                         padding: '8px 20px',
                                         backgroundColor: '#14b8a6',
-                                        color: '#042f2e',
+                                        color: 'white',
                                         fontSize: '14px',
                                         fontWeight: '800',
                                         borderRadius: '50px',
@@ -169,7 +169,7 @@ const ProjectsPage = () => {
                                             width: '8px',
                                             height: '8px',
                                             borderRadius: '50%',
-                                            backgroundColor: '#042f2e',
+                                            backgroundColor: 'white',
                                             animation: 'pulse 2s infinite'
                                         }}></span>
                                         {t('projects.ongoing')}
@@ -229,7 +229,7 @@ const ProjectsPage = () => {
                                     position: 'relative',
                                     overflow: 'hidden',
                                     borderRadius: '16px',
-                                    backgroundColor: '#115e59',
+                                    backgroundColor: '#1e293b',
                                     aspectRatio: '16/10',
                                     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
                                     border: '1px solid rgba(255, 255, 255, 0.05)'
@@ -291,24 +291,24 @@ const ProjectsPage = () => {
                             alignItems: 'center',
                             gap: '12px',
                             padding: '18px 48px',
-                            background: 'linear-gradient(135deg, #14b8a6 0%, #aa8c2c 100%)',
-                            color: '#042f2e',
+                            background: 'linear-gradient(135deg, #0d9488 0%, #14b8a6 100%)',
+                            color: 'white',
                             fontSize: '1.125rem',
                             fontWeight: '800',
                             borderRadius: '16px',
                             textDecoration: 'none',
-                            boxShadow: '0 10px 40px -10px rgba(212, 175, 55, 0.4)',
+                            boxShadow: '0 10px 40px -10px rgba(13, 148, 136, 0.4)',
                             transition: 'all 0.3s ease',
                             textTransform: 'uppercase',
                             letterSpacing: '0.05em'
                         }}
                         onMouseOver={(e) => {
                             e.currentTarget.style.transform = 'translateY(-3px)';
-                            e.currentTarget.style.boxShadow = '0 20px 50px -10px rgba(212, 175, 55, 0.5)';
+                            e.currentTarget.style.boxShadow = '0 20px 50px -10px rgba(13, 148, 136, 0.5)';
                         }}
                         onMouseOut={(e) => {
                             e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 10px 40px -10px rgba(212, 175, 55, 0.4)';
+                            e.currentTarget.style.boxShadow = '0 10px 40px -10px rgba(13, 148, 136, 0.4)';
                         }}
                     >
                         {t('projects.otherProjects')}
@@ -338,4 +338,3 @@ const ProjectsPage = () => {
 };
 
 export default ProjectsPage;
-
